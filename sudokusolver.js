@@ -56,12 +56,15 @@ const isValidPosition = (board, row, column, num) => {
 };
 
 const nextEmptyPosition = (board, currentRow, currentCol) => {
+  // console.log(`Evaluate Row: ${currentRow}, ${currentCol}`)
   for (i = currentRow; i < boardSize; i++) {
     for (j = currentCol; j < boardSize; j++) {
       if (board[i][j] === 0) {
+        // console.log(`Next Row: ${i},${j}`)
         return [i, j];
       }
     }
+    currentCol = 0
   }
   return [];
 };
@@ -73,22 +76,30 @@ function solve(board, currentRow, currentCol) {
   row = emptyPosition[0];
   column = emptyPosition[1];
 
+  console.log(`Current Position: ${row}, ${column}`)
+  console.log(`Position Length: ${emptyPosition.length}`)
+
   if (!emptyPosition.length) {
     return board;
   }
 
   // Iterate through possible sudoku numbers (1-9)
   for (num = 1; num < 10; num++) {
+    // console.log(`Number: ${num}`)
+    // console.log(`isValidPosition: ${isValidPosition(board, row, column, num)}`)
     if (isValidPosition(board, row, column, num)) {
       board[row][column] = num;
 
-      // if (solve(board, row, column)) {
-      //   return board;
-      // }
-
-      // board[row][column] = 0
+      boardTemp = solve(board, row, column)
+      if (boardTemp) {
+        return boardTemp;
+      }
+      // Reset to zero if bad solution
+      board[row][column] = 0;
     }
   }
-
-  // return
+  return false;
 }
+
+finalBoard = solve(test_board, 0, 0)
+console.log(finalBoard)
