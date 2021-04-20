@@ -71,11 +71,11 @@ const isInColumn = (board, column, num) => {
 const isInSubGrid = (board, row, column, num) => {
   // Check whether a number is in a box.
   // SubGrid start position is upper left corner
-  let startRow = row - (row % 3);
-  let startCol = column - (column % 3);
-  for (let i = startRow; i < startRow + 3; i++) {
-    for (let j = startCol; j < startCol + 3; j++) {
-      if (board[i][j] === num) {
+  row = row - (row % 3);
+  column = column - (column % 3);
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (board[i + row][j + column] === num) {
         return true;
       }
     }
@@ -137,8 +137,7 @@ function solve(board) {
   return false;
 }
 
-
-let finalBoard
+let finalBoard;
 finalBoard = solve(testBoard, 0, 0);
 console.log(finalBoard);
 finalBoard = solve(testBoard2, 0, 0);
