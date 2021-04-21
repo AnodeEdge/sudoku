@@ -1,16 +1,16 @@
-let testBoard = [
-  [0, 6, 0, 0, 0, 0, 4, 0, 0],
-  [0, 0, 7, 0, 2, 4, 0, 0, 8],
-  [8, 0, 0, 0, 6, 9, 5, 3, 0],
-  [6, 2, 0, 5, 9, 0, 0, 0, 4],
-  [0, 8, 3, 0, 1, 0, 9, 2, 0],
-  [9, 0, 0, 0, 8, 2, 0, 6, 1],
-  [0, 3, 2, 6, 5, 0, 0, 0, 0],
-  [7, 0, 0, 9, 4, 0, 2, 0, 0],
-  [0, 0, 4, 0, 0, 0, 0, 7, 0],
+let emptyBoard = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
-let testBoard2 = [
+let testBoard = [
   [0, 0, 0, 5, 7, 0, 8, 0, 9],
   [9, 0, 0, 0, 0, 0, 0, 4, 3],
   [3, 0, 7, 0, 0, 9, 2, 5, 1],
@@ -20,18 +20,6 @@ let testBoard2 = [
   [1, 3, 9, 6, 0, 0, 4, 0, 5],
   [7, 2, 0, 0, 0, 0, 0, 0, 8],
   [8, 0, 4, 0, 2, 1, 0, 0, 0],
-];
-
-let testBoard3 = [
-  [2, 0, 5, 3, 0, 9, 4, 0, 0],
-  [0, 0, 0, 0, 0, 5, 0, 6, 0],
-  [6, 9, 0, 0, 8, 0, 7, 0, 0],
-  [9, 6, 2, 0, 4, 0, 0, 0, 7],
-  [0, 0, 0, 5, 1, 2, 0, 0, 0],
-  [1, 0, 0, 0, 7, 0, 2, 8, 5],
-  [0, 0, 9, 0, 3, 0, 0, 4, 6],
-  [0, 3, 0, 4, 0, 0, 0, 0, 0],
-  [0, 0, 6, 8, 0, 1, 9, 0, 3],
 ];
 
 let no_solve = [
@@ -91,27 +79,22 @@ const isValidPosition = (board, row, column, num) => {
   );
 };
 
-const nextEmptyPosition = (board, currentRow, currentCol) => {
-  // console.log(`Evaluate Row: ${currentRow}, ${currentCol}`)
-  for (let i = currentRow; i < boardSize; i++) {
-    for (let j = currentCol; j < boardSize; j++) {
+const nextEmptyPosition = (board) => {
+  for (let i = 0; i < boardSize; i++) {
+    for (let j = 0; j < boardSize; j++) {
       if (board[i][j] === 0) {
-        // console.log(`Next Row: ${i},${j}`)
         return [i, j];
       }
     }
-    currentCol = 0;
   }
   return [];
 };
 
 function solve(board) {
   // Determine position where sudoku board is empty
-  emptyPosition = nextEmptyPosition(board, 0, 0);
+  emptyPosition = nextEmptyPosition(board);
   let row = emptyPosition[0];
   let column = emptyPosition[1];
-
-  // console.log(`Current Position: ${row}, ${column}`);
 
   if (!emptyPosition.length) {
     return board;
@@ -119,8 +102,6 @@ function solve(board) {
 
   // Iterate through possible sudoku numbers (1-9)
   for (let num = 1; num < 10; num++) {
-    // console.log(`Number: ${num}`)
-    // console.log(`isValidPosition: ${isValidPosition(board, row, column, num)}`)
     if (isValidPosition(board, row, column, num)) {
       board[row][column] = num;
 
@@ -131,16 +112,49 @@ function solve(board) {
       // Reset to zero if bad solution
       board[row][column] = 0;
     }
-    // console.log(num)
-    // console.log(board)
   }
   return false;
 }
 
-let finalBoard;
-finalBoard = solve(testBoard, 0, 0);
-console.log(finalBoard);
-finalBoard = solve(testBoard2, 0, 0);
-console.log(finalBoard);
-finalBoard = solve(testBoard3, 0, 0);
-console.log(finalBoard);
+const generateBlankBoard = () => {
+  let emptyBoard = [];
+  for (let i = 0; i < 9; i++) {
+    emptyBoard[i] = new Array(9).fill(0);
+  }
+  return emptyBoard;
+};
+
+const insertBoardSeed = (board) => {
+  // When fillLine is 0, fill the puzzle as a diagonal from top left to bottom right (\)
+  // When fill line is 1, fill the puzzle as a diagonal from top right to bottom left (/)
+  // let seedLineType = Math.round(Math.random());
+  let seedLineType = 0
+  console.log(seedLineType)
+  // Array of numbers 1 thru 9 shuffled
+  let seedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5);
+  let j = 8;
+  if (seedLineType === 0) {
+    for (let i = 0; i < 9; i++) {
+      board[i][i] = seedArray[i];
+    }
+  } 
+  if (seedLineType === 1) {
+    for (let i = 0; i < 9; i++) {
+      board[i][j] = seedArray[i];
+      j--;
+    }
+  }
+  return board;
+};
+
+const generateSudoku = () => {
+  let board = generateBlankBoard();
+  board = insertBoardSeed(board);
+  board = solve(board)
+  console.log(board);
+};
+
+generateSudoku();
+
+// let finalBoard;
+// finalBoard = solve(testBoard, 0, 0);
