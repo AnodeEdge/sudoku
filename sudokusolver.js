@@ -129,7 +129,7 @@ const insertBoardSeed = (board) => {
   // When fill line is 1, fill the puzzle as a diagonal from top right to bottom left (/)
   // let seedLineType = Math.round(Math.random());
   let seedLineType = 0
-  console.log(seedLineType)
+  // console.log(seedLineType)
   // Array of numbers 1 thru 9 shuffled
   let seedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5);
   let j = 8;
@@ -147,12 +147,38 @@ const insertBoardSeed = (board) => {
   return board;
 };
 
+const pruneBoard = (board, minRange, maxRange) => {
+  // minRange and maxRange are the minimum and maximum (inclusive) amount
+  // of values per row that are left on the board 
+  let min = Math.ceil(minRange)
+  let max = Math.floor(maxRange)
+  let randPrune
+  console.log(`min: ${min}, max: ${max}`)
+  for (let i = 0; i < 9; i++){
+    randPrune = 8 - Math.floor(Math.random() * (max - min + 1) + min)
+    console.log(randPrune)
+    let available = [0,1,2,3,4,5,6,7,8]
+    for (let j = 0; j <= randPrune; j++){
+      do {
+        randIndex = Math.floor(Math.random() * 10)
+      } while (!available.includes(randIndex))
+      board[i][randIndex] = 0
+      available.splice(randIndex, 1)
+    }
+  }
+  console.log(board)
+  return board
+}
+
 const generateSudoku = () => {
   let board = generateBlankBoard();
   board = insertBoardSeed(board);
   board = solve(board)
   console.log(board);
+  board = pruneBoard(board,0,3)
 };
+
+
 
 generateSudoku();
 
