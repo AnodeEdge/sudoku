@@ -1,0 +1,18 @@
+.board {
+    display: grid;
+    grid-template-rows: 1fr;
+    row-gap: 5px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(9, 10px);
+    column-gap: 20px;
+}
+
+input {
+    width: 2em;
+    height: 2em;
+    text-align: center;
+
+}

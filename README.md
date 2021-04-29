@@ -22,3 +22,6 @@ The solve algorithm was working and I believe I happened to typo a few test boar
 
 ### Day 4:
 Worked on a prune function that takes a min and max and randomly prunes numbers out until the remaining number of values is within the minimum and maximum range.  This will be used later to generate sudokus of different difficulties.  Didn't manage to finish this so hoping to finish it the next day.
+
+### Day 5:
+Decided to work on the HTML for the application instead of working on generating sudokus of different difficulties.  Using grid instead of table just to get more practice using grid.  Not much to report; decided to go the route of using a form and using an id to identify each sudoku input.  Created CSS to start styling.  
