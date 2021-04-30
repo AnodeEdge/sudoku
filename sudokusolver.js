@@ -36,8 +36,26 @@ let no_solve = [
 
 var boardSize = 9;
 
+const randomInt = (min,max) => {
+  // min and max are the inclusive range
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return (Math.floor(Math.random() * (max - min + 1) + min))
+}
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--){
+    let j = Math.floor(Math.random() * (i + 1))
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array
+}
+
 const isInRow = (board, row, num) => {
-  // Check whether a number is in a row
+  // Check whether a number is in a rowWonton!13
+
   for (let i = 0; i < boardSize; i++) {
     if (board[row][i] === num) {
       return true;
@@ -129,9 +147,8 @@ const insertBoardSeed = (board) => {
   // When fill line is 1, fill the puzzle as a diagonal from top right to bottom left (/)
   // let seedLineType = Math.round(Math.random());
   let seedLineType = 0
-  // console.log(seedLineType)
-  // Array of numbers 1 thru 9 shuffled
-  let seedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5);
+    // Array of numbers 1 thru 9 shuffled
+  let seedArray = shuffleArray([1,2,3,4,5,6,7,8,9])
   let j = 8;
   if (seedLineType === 0) {
     for (let i = 0; i < 9; i++) {
@@ -147,26 +164,16 @@ const insertBoardSeed = (board) => {
   return board;
 };
 
-const pruneBoard = (board, minRange, maxRange) => {
-  // minRange and maxRange are the minimum and maximum (inclusive) amount
-  // of values per row that are left on the board 
-  let min = Math.ceil(minRange)
-  let max = Math.floor(maxRange)
-  let randPrune
-  console.log(`min: ${min}, max: ${max}`)
-  for (let i = 0; i < 9; i++){
-    randPrune = 8 - Math.floor(Math.random() * (max - min + 1) + min)
-    console.log(randPrune)
-    let available = [0,1,2,3,4,5,6,7,8]
-    for (let j = 0; j <= randPrune; j++){
-      do {
-        randIndex = Math.floor(Math.random() * 10)
-      } while (!available.includes(randIndex))
-      board[i][randIndex] = 0
-      available.splice(randIndex, 1)
+const pruneBoard = (board, removals) => {
+  let x = randomInt(0,8)
+  let y = randomInt(0,8)
+  for (i=0; i < removals; i++){
+    while (board[x][y] == 0){
+      x = randomInt(0,8)
+      y = randomInt(0,8)
     }
+    board[x][y] = 0
   }
-  console.log(board)
   return board
 }
 
@@ -175,10 +182,9 @@ const generateSudoku = () => {
   board = insertBoardSeed(board);
   board = solve(board)
   console.log(board);
-  board = pruneBoard(board,0,3)
+  board = pruneBoard(board,60)
+  console.log(board)
 };
-
-
 
 generateSudoku();
 

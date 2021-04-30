@@ -25,3 +25,10 @@ Worked on a prune function that takes a min and max and randomly prunes numbers 
 
 ### Day 5:
 Decided to work on the HTML for the application instead of working on generating sudokus of different difficulties.  Using grid instead of table just to get more practice using grid.  Not much to report; decided to go the route of using a form and using an id to identify each sudoku input.  Created CSS to start styling.  
+
+### Day 6:
+Felt like I was overcomplicating my pruning solution and decided to just create a prune function that takes the board and removes n number of values from the board using randomly generated positions instead of parsing each row and randomly removing numbers from each row.  If there is time, I may go back and compare the two to see what different patterns or boards I might see just for fun.
+
+### To Do:
+- Fix pruning algorithm
+- Create HTML Board
