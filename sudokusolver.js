@@ -186,7 +186,7 @@ const generateSudoku = () => {
   console.log(board)
 };
 
-generateSudoku();
+// generateSudoku();
 
 // let finalBoard;
 // finalBoard = solve(testBoard, 0, 0);

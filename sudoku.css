@@ -1,3 +1,15 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .board {
     display: grid;
     grid-template-rows: 1fr;
@@ -15,4 +27,8 @@ input {
     height: 2em;
     text-align: center;
 
+}
+
+button {
+    width: 20em;
 }
