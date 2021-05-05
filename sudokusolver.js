@@ -1,73 +1,36 @@
-let emptyBoard = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-];
-
-let testBoard = [
-  [0, 0, 0, 5, 7, 0, 8, 0, 9],
-  [9, 0, 0, 0, 0, 0, 0, 4, 3],
-  [3, 0, 7, 0, 0, 9, 2, 5, 1],
-  [2, 0, 0, 0, 5, 8, 0, 1, 6],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [6, 7, 0, 9, 3, 0, 0, 0, 4],
-  [1, 3, 9, 6, 0, 0, 4, 0, 5],
-  [7, 2, 0, 0, 0, 0, 0, 0, 8],
-  [8, 0, 4, 0, 2, 1, 0, 0, 0],
-];
-
-let no_solve = [
-  [5, 1, 6, 8, 4, 9, 7, 3, 2],
-  [3, 0, 7, 6, 5, 0, 0, 0, 0],
-  [8, 0, 9, 7, 0, 0, 0, 6, 5],
-  [1, 3, 5, 0, 6, 0, 9, 0, 7],
-  [4, 7, 2, 5, 9, 1, 0, 0, 6],
-  [9, 6, 8, 3, 7, 0, 0, 5, 0],
-  [2, 5, 3, 1, 8, 6, 0, 7, 4],
-  [6, 8, 4, 2, 0, 7, 5, 0, 0],
-  [7, 9, 1, 0, 5, 0, 6, 0, 8],
-];
-
 var boardSize = 9;
 
-const randomInt = (min,max) => {
+const randomInt = (min, max) => {
   // min and max are the inclusive range
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return (Math.floor(Math.random() * (max - min + 1) + min))
-}
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
 
 const shuffleArray = (array) => {
-  for (let i = array.length - 1; i > 0; i--){
-    let j = Math.floor(Math.random() * (i + 1))
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
     let temp = array[i];
     array[i] = array[j];
     array[j] = temp;
   }
-  return array
-}
+  return array;
+};
 
-const isInRow = (board, row, num) => {
-  // Check whether a number is in a rowWonton!13
-
+const isInRow = (board, row, column, num) => {
+  // Check whether a number is in a row
   for (let i = 0; i < boardSize; i++) {
-    if (board[row][i] === num) {
+    if (board[row][i] === num && column !== i) {
       return true;
     }
   }
   return false;
 };
 
-const isInColumn = (board, column, num) => {
+const isInColumn = (board, row, column, num) => {
   // Check whether a number is in a column
   for (let i = 0; i < boardSize; i++) {
-    if (board[i][column] === num) {
+    if (board[i][column] === num && row !== i) {
       return true;
     }
   }
@@ -77,11 +40,14 @@ const isInColumn = (board, column, num) => {
 const isInSubGrid = (board, row, column, num) => {
   // Check whether a number is in a box.
   // SubGrid start position is upper left corner
-  row = row - (row % 3);
-  column = column - (column % 3);
+  let x = row - (row % 3);
+  let y = column - (column % 3);
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
-      if (board[i + row][j + column] === num) {
+      if (board[i + x][j + y] === board[row][column]) {
+        continue;
+      }
+      if (board[i + x][j + y] === num) {
         return true;
       }
     }
@@ -91,8 +57,8 @@ const isInSubGrid = (board, row, column, num) => {
 
 const isValidPosition = (board, row, column, num) => {
   return (
-    !isInRow(board, row, num) &&
-    !isInColumn(board, column, num) &&
+    !isInRow(board, row, column, num) &&
+    !isInColumn(board, row, column, num) &&
     !isInSubGrid(board, row, column, num)
   );
 };
@@ -146,15 +112,15 @@ const insertBoardSeed = (board) => {
   // When fillLine is 0, fill the puzzle as a diagonal from top left to bottom right (\)
   // When fill line is 1, fill the puzzle as a diagonal from top right to bottom left (/)
   // let seedLineType = Math.round(Math.random());
-  let seedLineType = 0
-    // Array of numbers 1 thru 9 shuffled
-  let seedArray = shuffleArray([1,2,3,4,5,6,7,8,9])
+  let seedLineType = 0;
+  // Array of numbers 1 thru 9 shuffled
+  let seedArray = shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   let j = 8;
   if (seedLineType === 0) {
     for (let i = 0; i < 9; i++) {
       board[i][i] = seedArray[i];
     }
-  } 
+  }
   if (seedLineType === 1) {
     for (let i = 0; i < 9; i++) {
       board[i][j] = seedArray[i];
@@ -165,28 +131,42 @@ const insertBoardSeed = (board) => {
 };
 
 const pruneBoard = (board, removals) => {
-  let x = randomInt(0,8)
-  let y = randomInt(0,8)
-  for (i=0; i < removals; i++){
-    while (board[x][y] == 0){
-      x = randomInt(0,8)
-      y = randomInt(0,8)
+  let x = randomInt(0, 8);
+  let y = randomInt(0, 8);
+  for (i = 0; i < removals; i++) {
+    while (board[x][y] == 0) {
+      x = randomInt(0, 8);
+      y = randomInt(0, 8);
     }
-    board[x][y] = 0
+    board[x][y] = 0;
   }
-  return board
-}
-
-const generateSudoku = () => {
-  let board = generateBlankBoard();
-  board = insertBoardSeed(board);
-  board = solve(board)
-  console.log(board);
-  board = pruneBoard(board,60)
-  console.log(board)
+  return board;
 };
 
-// generateSudoku();
+const generateSudoku = (difficulty = "easy") => {
+  let board = generateBlankBoard();
+  let removals = (difficulty == "easy") ? 55 
+  : (difficulty == "medium" ) ? 60 
+  : (difficulty == "hard") ? 65
+  : (difficulty == "experimental") ? 70 
+  : 55
 
-// let finalBoard;
-// finalBoard = solve(testBoard, 0, 0);
+  board = pruneBoard(solve(insertBoardSeed(board)), removals);
+  // board = solve(board);
+  // board = pruneBoard(board, 60);
+  return board;
+};
+
+const isBoardSolved = (board) => {
+  for (i = 0; i < 9; i++){
+      for(j = 0; j < 9; j++) {
+          if (!isValidPosition(board, i, j, board[i][j])){
+            console.log(`false here: ${i},${j} with a value of ${board[i][j]}`)
+            return false
+          }
+      }
+  }
+  console.log(true)
+  return true
+};
+

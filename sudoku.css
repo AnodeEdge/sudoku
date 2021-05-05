@@ -10,25 +10,60 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+/* .title {
+    justify-content: center;
+    text-align: center;
+} */
+
 .board {
     display: grid;
+    justify-content: center;
     grid-template-rows: 1fr;
-    row-gap: 5px;
+    row-gap: 0px;
+    margin: 0 50% 0 50%
 }
 
-.row {
+/* .settings {
+    justify-content: center;
+    text-align: center;
+} */
+
+/* span {
+    width: 2em;
+    height: 2em;
+} */
+
+.rows {
     display: grid;
-    grid-template-columns: repeat(9, 10px);
-    column-gap: 20px;
+    grid-template-columns: repeat(9, 1fr);
+    column-gap: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
+
+.prefilled {
+    color:black;
+    /* border: 1px solid blue */
+}
+/* 
+.left-edge{
+    border-left: 2px !important;
+    border-left-color: black !important;
+} */
 
 input {
     width: 2em;
     height: 2em;
     text-align: center;
+    font-size: large;
+    color: blue;
+    /* border: none; */
+}
 
+input:focus {
+    outline: none;
 }
 
 button {
     width: 20em;
-}
+}  
