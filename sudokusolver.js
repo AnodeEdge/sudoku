@@ -19,7 +19,7 @@ const shuffleArray = (array) => {
 
 const isInRow = (board, row, column, num) => {
   // Check whether a number is in a row
-  for (let i = 0; i < boardSize; i++) {
+  for (let i = 0; i < 9; i++) {
     if (board[row][i] === num && column !== i) {
       return true;
     }
@@ -27,9 +27,10 @@ const isInRow = (board, row, column, num) => {
   return false;
 };
 
+
 const isInColumn = (board, row, column, num) => {
   // Check whether a number is in a column
-  for (let i = 0; i < boardSize; i++) {
+  for (let i = 0; i < 9; i++) {
     if (board[i][column] === num && row !== i) {
       return true;
     }
@@ -152,8 +153,6 @@ const generateSudoku = (difficulty = "easy") => {
   : 55
 
   board = pruneBoard(solve(insertBoardSeed(board)), removals);
-  // board = solve(board);
-  // board = pruneBoard(board, 60);
   return board;
 };
 

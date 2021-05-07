@@ -12,7 +12,7 @@ const serializeForm = () => {
       board[row].push(parseInt(form.elements[i].value));
     }
   }
-  console.log(board)
+  console.log(board);
   return board;
 };
 
@@ -41,28 +41,41 @@ const drawPlayBoard = (board) => {
   }
 };
 
-let baseBoard = generateSudoku();
-console.log(baseBoard);
-drawPlayBoard(baseBoard, true);
-
-let form = document.getElementById("board");
-let settings = document.getElementById("settings");
+const drawSolveBoard = (board) => {
+  let box;
+  for (i = 0; i < 9; i++) {
+    for (j = 0; j < 9; j++) {
+      box = document.getElementById(`${i}${j}`);
+      if (box.readOnly == false){
+        box.value = `${board[i][j]}`;
+        box.readOnly = false;
+        box.classList.remove("prefilled");
+      }
+    }
+  }
+}
 
 const handleSubmit = (evt) => {
   evt.preventDefault();
   let board = serializeForm();
-  console.log(board)
-  if (isBoardSolved(board)){
-    alert("Sudoku is Correct")
+  console.log(board);
+  if (isBoardSolved(board)) {
+    alert("Sudoku is Correct");
   } else {
-    alert("Wrong")
+    alert("Wrong");
   }
 };
 
 const handleSolve = (evt) => {
   evt.preventDefault();
-
-}
+  let board = serializeForm();
+  let solvedBoard = solve(board);
+  if (solvedBoard) {
+    drawSolveBoard(solvedBoard);
+    return true;
+  }
+  alert("This cannot be solved");
+};
 
 const handleNew = (evt) => {
   evt.preventDefault();
@@ -70,6 +83,13 @@ const handleNew = (evt) => {
   drawPlayBoard(baseBoard);
 };
 
+let baseBoard = generateSudoku();
+console.log(baseBoard);
+drawPlayBoard(baseBoard);
+
+let form = document.getElementById("board");
+let settings = document.getElementById("settings");
+
 form.addEventListener("submit", handleSubmit);
-document.getElementById("solve").addEventListener("click", handleSolve)
+document.getElementById("solve").addEventListener("click", handleSolve);
 settings.addEventListener("submit", handleNew);
