@@ -29,6 +29,5 @@ Decided to work on the HTML for the application instead of working on generating
 ### Day 6:
 Felt like I was overcomplicating my pruning solution and decided to just create a prune function that takes the board and removes n number of values from the board using randomly generated positions instead of parsing each row and randomly removing numbers from each row.  If there is time, I may go back and compare the two to see what different patterns or boards I might see just for fun.
 
-### To Do:
-- Fix pruning algorithm
-- Create HTML Board
+### Day 7:
+Haven't been keeping up to date with the journal since my schedule has been erratic; revised the pruning algorithm and created the HTML board. Added styling as well.  Revised the solve algorithm so that it can be used to solve partially completed boards.  Whats left on the docket is basically to style the board itself.
