@@ -2,124 +2,151 @@
   <head>
     <meta charset="UTF-8" />
     <title>Sudoku</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="sudoku.css"
   </head>
   <body>
-    <h1 class="title text-center">Sudoku</h1>
-    <form class="board" id="board">
-      <div class="rows" id="r0">
-        <input class="left-edge" id="00" maxlength="1" min=1 max=9 type="number"/>
-        <input id="01" maxlength="1" min=1 max=9 type="number"/>
-        <input id="02" maxlength="1" min=1 max=9 type="number"/>
-        <input id="03" maxlength="1" min=1 max=9 type="number"/>
-        <input id="04" maxlength="1" min=1 max=9 type="number"/>
-        <input id="05" maxlength="1" min=1 max=9 type="number"/>
-        <input id="06" maxlength="1" min=1 max=9 type="number"/>
-        <input id="07" maxlength="1" min=1 max=9 type="number"/>
-        <input id="08" maxlength="1" min=1 max=9 type="number"/>
-      </div>
-      <div class="rows" id="r1">
-        <input id="10" maxlength="1" min=1 max=9 type="number"/>
-        <input id="11" maxlength="1" min=1 max=9 type="number"/>
-        <input id="12" maxlength="1" min=1 max=9 type="number"/>
-        <input id="13" maxlength="1" min=1 max=9 type="number"/>
-        <input id="14" maxlength="1" min=1 max=9 type="number"/>
-        <input id="15" maxlength="1" min=1 max=9 type="number"/>
-        <input id="16" maxlength="1" min=1 max=9 type="number"/>
-        <input id="17" maxlength="1" min=1 max=9 type="number"/>
-        <input id="18" maxlength="1" min=1 max=9 type="number"/>
-      </div>
-      <div class="rows" id="r2">
-        <input id="20" maxlength="1" min=1 max=9 type="number"/>
-        <input id="21" maxlength="1" min=1 max=9 type="number"/>
-        <input id="22" maxlength="1" min=1 max=9 type="number"/>
-        <input id="23" maxlength="1" min=1 max=9 type="number"/>
-        <input id="24" maxlength="1" min=1 max=9 type="number"/>
-        <input id="25" maxlength="1" min=1 max=9 type="number"/>
-        <input id="26" maxlength="1" min=1 max=9 type="number"/>
-        <input id="27" maxlength="1" min=1 max=9 type="number"/>
-        <input id="28" maxlength="1" min=1 max=9 type="number"/>
-      </div>
-      <div class="rows" id="r3">
-        <input id="30" maxlength="1" min=1 max=9 type="number"/>
-        <input id="31" maxlength="1" min=1 max=9 type="number"/>
-        <input id="32" maxlength="1" min=1 max=9 type="number"/>
-        <input id="33" maxlength="1" min=1 max=9 type="number"/>
-        <input id="34" maxlength="1" min=1 max=9 type="number"/>
-        <input id="35" maxlength="1" min=1 max=9 type="number"/>
-        <input id="36" maxlength="1" min=1 max=9 type="number"/>
-        <input id="37" maxlength="1" min=1 max=9 type="number"/>
-        <input id="38" maxlength="1" min=1 max=9 type="number"/>
-      </div>
-      <div class="rows" id="r4">
-        <input id="40" maxlength="1" min=1 max=9 type="number"/>
-        <input id="41" maxlength="1" min=1 max=9 type="number"/>
-        <input id="42" maxlength="1" min=1 max=9 type="number"/>
-        <input id="43" maxlength="1" min=1 max=9 type="number"/>
-        <input id="44" maxlength="1" min=1 max=9 type="number"/>
-        <input id="45" maxlength="1" min=1 max=9 type="number"/>
-        <input id="46" maxlength="1" min=1 max=9 type="number"/>
-        <input id="47" maxlength="1" min=1 max=9 type="number"/>
-        <input id="48" maxlength="1" min=1 max=9 type="number"/>
-      </div>
-      <div class="rows" id="r5">
-        <input id="50" maxlength="1" min=1 max=9 type="number"/>
-        <input id="51" maxlength="1" min=1 max=9 type="number"/>
-        <input id="52" maxlength="1" min=1 max=9 type="number"/>
-        <input id="53" maxlength="1" min=1 max=9 type="number"/>
-        <input id="54" maxlength="1" min=1 max=9 type="number"/>
-        <input id="55" maxlength="1" min=1 max=9 type="number"/>
-        <input id="56" maxlength="1" min=1 max=9 type="number"/>
-        <input id="57" maxlength="1" min=1 max=9 type="number"/>
-        <input id="58" maxlength="1" min=1 max=9 type="number"/>
-      </div>
-      <div class="rows" id="r6">
-        <input id="60" maxlength="1" min=1 max=9 type="number"/>
-        <input id="61" maxlength="1" min=1 max=9 type="number"/>
-        <input id="62" maxlength="1" min=1 max=9 type="number"/>
-        <input id="63" maxlength="1" min=1 max=9 type="number"/>
-        <input id="64" maxlength="1" min=1 max=9 type="number"/>
-        <input id="65" maxlength="1" min=1 max=9 type="number"/>
-        <input id="66" maxlength="1" min=1 max=9 type="number"/>
-        <input id="67" maxlength="1" min=1 max=9 type="number"/>
-        <input id="68" maxlength="1" min=1 max=9 type="number"/>
-      </div>
-      <div class="rows" id="r7">
-        <input id="70" maxlength="1" min=1 max=9 type="number"/>
-        <input id="71" maxlength="1" min=1 max=9 type="number"/>
-        <input id="72" maxlength="1" min=1 max=9 type="number"/>
-        <input id="73" maxlength="1" min=1 max=9 type="number"/>
-        <input id="74" maxlength="1" min=1 max=9 type="number"/>
-        <input id="75" maxlength="1" min=1 max=9 type="number"/>
-        <input id="76" maxlength="1" min=1 max=9 type="number"/>
-        <input id="77" maxlength="1" min=1 max=9 type="number"/>
-        <input id="78" maxlength="1" min=1 max=9 type="number"/>
-      </div>
-      <div class="rows" id="r8">
-        <input id="80" maxlength="1" min=1 max=9 type="number"/>
-        <input id="81" maxlength="1" min=1 max=9 type="number"/>
-        <input id="82" maxlength="1" min=1 max=9 type="number"/>
-        <input id="83" maxlength="1" min=1 max=9 type="number"/>
-        <input id="84" maxlength="1" min=1 max=9 type="number"/>
-        <input id="85" maxlength="1" min=1 max=9 type="number"/>
-        <input id="86" maxlength="1" min=1 max=9 type="number"/>
-        <input id="87" maxlength="1" min=1 max=9 type="number"/>
-        <input id="88" maxlength="1" min=1 max=9 type="number"/>
-      </div>
-      <button type="submit" id="submit" >Submit</button>
-      <button type="solve" id="solve">Solve</button>
-    </form>
-    <form class="settings" id="settings">
-      <h3>Difficulty</h3>
-      <select class="form-select-lg" name="difficulty" id="difficulty">
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-        <option value="experimental">Experimental</option>
-      </select>
-      <button type="new" id="new" >New</button>
-    </form>
+    <div class="left-container">
+      <form class="settings" id="settings">
+        <h3>Settings</h3>
+        <hr />
+        <h4>Difficulty</h4>
+        <select
+          class="btn btn-light settings-select"
+          name="difficulty"
+          id="difficulty"
+        >
+          <option selected value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+          <option value="experimental">Experimental</option>
+        </select>
+        <button class="btn btn-primary new-game-btn" type="new" id="new">New Game</button>
+        <hr />
+        <div>
+          <button class="btn btn-primary" type="solve" id="solve">
+            Solve it for me.
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="right-container">
+      <form class="board" id="board">
+        <h1 class="title">Sudoku</h1>
+        <div class="rows" id="r0">
+          <input
+            class="left-edge"
+            id="00"
+            maxlength="1"
+            min="1"
+            max="9"
+            type="number"
+          />
+          <input id="01" maxlength="1" min="1" max="9" type="number" />
+          <input id="02" maxlength="1" min="1" max="9" type="number" />
+          <input id="03" maxlength="1" min="1" max="9" type="number" />
+          <input id="04" maxlength="1" min="1" max="9" type="number" />
+          <input id="05" maxlength="1" min="1" max="9" type="number" />
+          <input id="06" maxlength="1" min="1" max="9" type="number" />
+          <input id="07" maxlength="1" min="1" max="9" type="number" />
+          <input id="08" maxlength="1" min="1" max="9" type="number" />
+        </div>
+        <div class="rows" id="r1">
+          <input id="10" maxlength="1" min="1" max="9" type="number" />
+          <input id="11" maxlength="1" min="1" max="9" type="number" />
+          <input id="12" maxlength="1" min="1" max="9" type="number" />
+          <input id="13" maxlength="1" min="1" max="9" type="number" />
+          <input id="14" maxlength="1" min="1" max="9" type="number" />
+          <input id="15" maxlength="1" min="1" max="9" type="number" />
+          <input id="16" maxlength="1" min="1" max="9" type="number" />
+          <input id="17" maxlength="1" min="1" max="9" type="number" />
+          <input id="18" maxlength="1" min="1" max="9" type="number" />
+        </div>
+        <div class="rows" id="r2">
+          <input id="20" maxlength="1" min="1" max="9" type="number" />
+          <input id="21" maxlength="1" min="1" max="9" type="number" />
+          <input id="22" maxlength="1" min="1" max="9" type="number" />
+          <input id="23" maxlength="1" min="1" max="9" type="number" />
+          <input id="24" maxlength="1" min="1" max="9" type="number" />
+          <input id="25" maxlength="1" min="1" max="9" type="number" />
+          <input id="26" maxlength="1" min="1" max="9" type="number" />
+          <input id="27" maxlength="1" min="1" max="9" type="number" />
+          <input id="28" maxlength="1" min="1" max="9" type="number" />
+        </div>
+        <div class="rows" id="r3">
+          <input id="30" maxlength="1" min="1" max="9" type="number" />
+          <input id="31" maxlength="1" min="1" max="9" type="number" />
+          <input id="32" maxlength="1" min="1" max="9" type="number" />
+          <input id="33" maxlength="1" min="1" max="9" type="number" />
+          <input id="34" maxlength="1" min="1" max="9" type="number" />
+          <input id="35" maxlength="1" min="1" max="9" type="number" />
+          <input id="36" maxlength="1" min="1" max="9" type="number" />
+          <input id="37" maxlength="1" min="1" max="9" type="number" />
+          <input id="38" maxlength="1" min="1" max="9" type="number" />
+        </div>
+        <div class="rows" id="r4">
+          <input id="40" maxlength="1" min="1" max="9" type="number" />
+          <input id="41" maxlength="1" min="1" max="9" type="number" />
+          <input id="42" maxlength="1" min="1" max="9" type="number" />
+          <input id="43" maxlength="1" min="1" max="9" type="number" />
+          <input id="44" maxlength="1" min="1" max="9" type="number" />
+          <input id="45" maxlength="1" min="1" max="9" type="number" />
+          <input id="46" maxlength="1" min="1" max="9" type="number" />
+          <input id="47" maxlength="1" min="1" max="9" type="number" />
+          <input id="48" maxlength="1" min="1" max="9" type="number" />
+        </div>
+        <div class="rows" id="r5">
+          <input id="50" maxlength="1" min="1" max="9" type="number" />
+          <input id="51" maxlength="1" min="1" max="9" type="number" />
+          <input id="52" maxlength="1" min="1" max="9" type="number" />
+          <input id="53" maxlength="1" min="1" max="9" type="number" />
+          <input id="54" maxlength="1" min="1" max="9" type="number" />
+          <input id="55" maxlength="1" min="1" max="9" type="number" />
+          <input id="56" maxlength="1" min="1" max="9" type="number" />
+          <input id="57" maxlength="1" min="1" max="9" type="number" />
+          <input id="58" maxlength="1" min="1" max="9" type="number" />
+        </div>
+        <div class="rows" id="r6">
+          <input id="60" maxlength="1" min="1" max="9" type="number" />
+          <input id="61" maxlength="1" min="1" max="9" type="number" />
+          <input id="62" maxlength="1" min="1" max="9" type="number" />
+          <input id="63" maxlength="1" min="1" max="9" type="number" />
+          <input id="64" maxlength="1" min="1" max="9" type="number" />
+          <input id="65" maxlength="1" min="1" max="9" type="number" />
+          <input id="66" maxlength="1" min="1" max="9" type="number" />
+          <input id="67" maxlength="1" min="1" max="9" type="number" />
+          <input id="68" maxlength="1" min="1" max="9" type="number" />
+        </div>
+        <div class="rows" id="r7">
+          <input id="70" maxlength="1" min="1" max="9" type="number" />
+          <input id="71" maxlength="1" min="1" max="9" type="number" />
+          <input id="72" maxlength="1" min="1" max="9" type="number" />
+          <input id="73" maxlength="1" min="1" max="9" type="number" />
+          <input id="74" maxlength="1" min="1" max="9" type="number" />
+          <input id="75" maxlength="1" min="1" max="9" type="number" />
+          <input id="76" maxlength="1" min="1" max="9" type="number" />
+          <input id="77" maxlength="1" min="1" max="9" type="number" />
+          <input id="78" maxlength="1" min="1" max="9" type="number" />
+        </div>
+        <div class="rows" id="r8">
+          <input id="80" maxlength="1" min="1" max="9" type="number" />
+          <input id="81" maxlength="1" min="1" max="9" type="number" />
+          <input id="82" maxlength="1" min="1" max="9" type="number" />
+          <input id="83" maxlength="1" min="1" max="9" type="number" />
+          <input id="84" maxlength="1" min="1" max="9" type="number" />
+          <input id="85" maxlength="1" min="1" max="9" type="number" />
+          <input id="86" maxlength="1" min="1" max="9" type="number" />
+          <input id="87" maxlength="1" min="1" max="9" type="number" />
+          <input id="88" maxlength="1" min="1" max="9" type="number" />
+        </div>
+        <button class="btn btn-primary submit" type="submit" id="submit">
+          Submit
+        </button>
+      </form>
+    </div>
     <script src="sudokusolver.js"></script>
     <script src="sudoku.js"></script>
   </body>

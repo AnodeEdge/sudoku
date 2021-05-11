@@ -10,40 +10,50 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* .title {
-    justify-content: center;
+.title {
     text-align: center;
-} */
+}
+
+.left-container {
+    width: 15%;
+    float: left;
+    margin-left: 20%;
+}
+
+.settings-select {
+    width: 10em;
+    /* background-color: white; */
+}
 
 .board {
     display: grid;
     justify-content: center;
     grid-template-rows: 1fr;
-    row-gap: 0px;
+    row-gap: 2px;
     margin: 0 50% 0 50%
 }
-
-/* .settings {
-    justify-content: center;
-    text-align: center;
-} */
-
-/* span {
-    width: 2em;
-    height: 2em;
-} */
 
 .rows {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    column-gap: 0px;
+    column-gap: 2px;
     padding-bottom: 0px;
     margin-bottom: 0px;
+}
+
+.submit{
+    margin: 2em 0 0 0;
+    width: 10em;
+    justify-self: right;
 }
 
 .prefilled {
     color:black;
     /* border: 1px solid blue */
+}
+
+.new-game-btn {
+    margin: 0 0 0 2em;
 }
 /* 
 .left-edge{
@@ -64,6 +74,3 @@ input:focus {
     outline: none;
 }
 
-button {
-    width: 20em;
-}  

@@ -1,3 +1,7 @@
+function inputMaxLength (element) {
+  element.value = element.value.slice(0, this.maxLength)
+}
+
 const serializeForm = () => {
   let board = [[], [], [], [], [], [], [], [], []];
   let row = 0;
@@ -12,7 +16,6 @@ const serializeForm = () => {
       board[row].push(parseInt(form.elements[i].value));
     }
   }
-  console.log(board);
   return board;
 };
 
@@ -58,13 +61,13 @@ const drawSolveBoard = (board) => {
 const handleSubmit = (evt) => {
   evt.preventDefault();
   let board = serializeForm();
-  console.log(board);
   if (isBoardSolved(board)) {
     alert("Sudoku is Correct");
   } else {
     alert("Wrong");
   }
 };
+
 
 const handleSolve = (evt) => {
   evt.preventDefault();
@@ -84,7 +87,6 @@ const handleNew = (evt) => {
 };
 
 let baseBoard = generateSudoku();
-console.log(baseBoard);
 drawPlayBoard(baseBoard);
 
 let form = document.getElementById("board");
