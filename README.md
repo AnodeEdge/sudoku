@@ -3,6 +3,8 @@
 ## About This Project
 This sudoku game and solver was built using javascript and HTML. The solver uses a recursive algorithm to build the solution incrementally by testing possible solutions in the empty spaces.  If a solution doesn't work, it backtracks to attempt another solution. 
 
+![Sudoku]()
+
 ## Future List of Wants
 - Method to generate sudoku board that only has one unique solution
 - Other methods to generate more unique sudoku boards
