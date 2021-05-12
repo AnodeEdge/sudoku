@@ -3,8 +3,14 @@
 ## About This Project
 This sudoku game and solver was built using javascript and HTML. The solver uses a recursive algorithm to build the solution incrementally by testing possible solutions in the empty spaces.  If a solution doesn't work, it backtracks to attempt another solution. 
 
+## Future List of Wants
+- Method to generate sudoku board that only has one unique solution
+- Other methods to generate more unique sudoku boards
+- Add modal to display messages instead of relying on alerts.
+- CI/CD Pipeline to quickly deploy on a webserver.
+
 ## Journal
-A log of what I've done every day until the project is completed.
+A log of what I've done until the project is completed.
 
 ### Day 1: 
 Generated the checks neccessary to determine whether a possible solution is valid for a given square.  The following contraints determine whether a solution is valid:
@@ -31,3 +37,6 @@ Felt like I was overcomplicating my pruning solution and decided to just create 
 
 ### Day 7:
 Haven't been keeping up to date with the journal since my schedule has been erratic; revised the pruning algorithm and created the HTML board. Added styling as well.  Revised the solve algorithm so that it can be used to solve partially completed boards.  Whats left on the docket is basically to style the board itself.
+
+### Day 8:
+Added borders to the sudoku board.  Learned about CSS wildcards, not sure if its best practice to use it but it was interesting to learn about them.  I am going to stop working on this project now but I have thought of a new "wants" that I'm going to list above.
