@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="sudoku.css"
   </head>
   <body>
-    <div class="left-container">
+    <div class="liveyourlife">
+      <div class="left-container">
       <form class="settings" id="settings">
         <h3>Settings</h3>
         <hr />
@@ -24,11 +25,13 @@
           <option value="hard">Hard</option>
           <option value="experimental">Experimental</option>
         </select>
-        <button class="btn btn-primary new-game-btn" type="new" id="new">New Game</button>
+        <button class="btn btn-primary new-game-btn" type="new" id="new">
+          New Game
+        </button>
         <hr />
         <div>
           <button class="btn btn-primary" type="solve" id="solve">
-            Solve it for me.
+            Solve it for me
           </button>
         </div>
       </form>
@@ -36,15 +39,8 @@
     <div class="right-container">
       <form class="board" id="board">
         <h1 class="title">Sudoku</h1>
-        <div class="rows" id="r0">
-          <input
-            class="left-edge"
-            id="00"
-            maxlength="1"
-            min="1"
-            max="9"
-            type="number"
-          />
+        <div class="rows top-row" id="r0">
+          <input id="00" maxlength="1" min="1" max="9" type="number"/>
           <input id="01" maxlength="1" min="1" max="9" type="number" />
           <input id="02" maxlength="1" min="1" max="9" type="number" />
           <input id="03" maxlength="1" min="1" max="9" type="number" />
@@ -131,7 +127,7 @@
           <input id="77" maxlength="1" min="1" max="9" type="number" />
           <input id="78" maxlength="1" min="1" max="9" type="number" />
         </div>
-        <div class="rows" id="r8">
+        <div class="rows bottom-row" id="r8">
           <input id="80" maxlength="1" min="1" max="9" type="number" />
           <input id="81" maxlength="1" min="1" max="9" type="number" />
           <input id="82" maxlength="1" min="1" max="9" type="number" />
@@ -143,11 +139,12 @@
           <input id="88" maxlength="1" min="1" max="9" type="number" />
         </div>
         <button class="btn btn-primary submit" type="submit" id="submit">
-          Submit
+          Check the Board
         </button>
       </form>
     </div>
     <script src="sudokusolver.js"></script>
     <script src="sudoku.js"></script>
+  </div>
   </body>
 </html>

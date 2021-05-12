@@ -19,12 +19,6 @@ const serializeForm = () => {
   return board;
 };
 
-const applyStyles = (x, y, element) => {
-  if (y === 0) {
-    element.classList.add("left-edge");
-  }
-};
-
 const drawPlayBoard = (board) => {
   let box;
   for (i = 0; i < 9; i++) {
@@ -39,7 +33,7 @@ const drawPlayBoard = (board) => {
         box.value = "";
         box.classList.remove("prefilled");
       }
-      applyStyles(i, j, box);
+      // applyStyles(i, j, box);
     }
   }
 };
