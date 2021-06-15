@@ -1,6 +1,6 @@
 # Sudoku Solver
 
-[View the website here](https://sudoku.scott-curtis.com)
+[View the website here](https://www.sudoku.scott-curtis.com)
 
 ## About This Project
 This sudoku game and solver was built using javascript and HTML. The solver uses a recursive algorithm to build the solution incrementally by testing possible solutions in the empty spaces.  If a solution doesn't work, it backtracks to attempt another solution. 
